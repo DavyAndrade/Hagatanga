@@ -12,7 +12,7 @@ import { AppController } from './app.controller';
 
 @Module({
   imports: [
-    /* TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -20,19 +20,20 @@ import { AppController } from './app.controller';
       password: 'root',
       database: 'hagatanga',
       entities: [Projeto, GrupoPI, Turma],
-      synchronize: true
-    }), */
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      logging: false,
-      dropSchema: false,
-      ssl: {
-        rejectUnauthorized: false,
-      },
-      synchronize: true,
-      autoLoadEntities: true,
+      synchronize: false,
+      dropSchema: true
     }),
+    /* TypeOrmModule.forRoot({
+       type: 'postgres',
+       url: process.env.DATABASE_URL,
+       logging: false,
+       dropSchema: false,
+       ssl: {
+         rejectUnauthorized: false,
+       },
+       synchronize: true,
+       autoLoadEntities: true,
+     }), */
     TurmaModule,
     ProjetoModule,
     GrupoPIModule
